@@ -1,19 +1,16 @@
-function deserialize(data) {
-  if (!data.length) return null;
-  const root = new TreeNode(data.shift());
-  const queue = [root];
-  while (queue.length) {
-    const node = queue.shift();
-    const leftVal = data.shift();
-    if (leftVal !== undefined) {
-      node.left = new TreeNode(leftVal);
-      queue.push(node.left);
-    }
-    const rightVal = data.shift();
-    if (rightVal !== undefined) {
-      node.right = new TreeNode(rightVal);
-      queue.push(node.right);
+function longestConsecutive(nums) {
+  const set = new Set(nums);
+  let longest = 0;
+  for (const num of set) {
+    if (!set.has(num - 1)) {
+      let currentNum = num;
+      let currentStreak = 1;
+      while (set.has(currentNum + 1)) {
+        currentNum++;
+        currentStreak++;
+      }
+      longest = Math.max(longest, currentStreak);
     }
   }
-  return root;
+  return longest;
 }
