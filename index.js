@@ -1,24 +1,13 @@
-const mergeSort = (arr) => {
-  if (arr.length <= 1) {
-    return arr;
+function maxProduct(nums) {
+  if (nums.length === 0) return 0;
+  let maxSoFar = nums[0];
+  let minSoFar = nums[0];
+  let maxProduct = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    const temp = maxSoFar;
+    maxSoFar = Math.max(nums[i], nums[i] * maxSoFar, nums[i] * minSoFar);
+    minSoFar = Math.min(nums[i], nums[i] * temp, nums[i] * minSoFar);
+    maxProduct = Math.max(maxProduct, maxSoFar);
   }
-  const mid = Math.floor(arr.length / 2);
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
-  return merge(left, right);
-};
-const merge = (left, right) => {
-  let result = [];
-  let leftIndex = 0;
-  let rightIndex = 0;
-  while (leftIndex < left.length && rightIndex < right.length) {
-    if (left[leftIndex] < right[rightIndex]) {
-      result.push(left[leftIndex]);
-      leftIndex++;
-    } else {
-      result.push(right[rightIndex]);
-      rightIndex++;
-    }
-  }
-  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
-};
+  return maxProduct;
+}
