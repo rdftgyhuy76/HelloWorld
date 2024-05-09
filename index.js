@@ -1,4 +1,3 @@
-const dropRightWhile = (arr, func) => {
-  while (arr.length > 0 && !func(arr[arr.length - 1])) arr = arr.slice(0, -1);
-  return arr;
-};
+const name = "john";
+const upperName = name.toUpperCase();
+console.log(upperName); // JOHN
