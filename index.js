@@ -1,3 +1,3 @@
-const name = "john";
-const upperName = name.toUpperCase();
-console.log(upperName); // JOHN
+function countWords(str) {
+  return str.split(" ").filter((word) => word !== "").length;
+}
