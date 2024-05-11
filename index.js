@@ -1,3 +1,1 @@
-function countWords(str) {
-  return str.split(" ").filter((word) => word !== "").length;
-}
+const uniqueValues = (arr) => [...new Set(arr)];
